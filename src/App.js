@@ -7,35 +7,36 @@ import ForwordRefCom from './ForwordRefCom';
 
 function App() {
 
-  const [formData, setFormData ] = useState({});
-  const [count, setCount] = useState(0);
-  const [data, setData] = useState(100)
+    const [modal, setModal] = useState(false);
 
-  let modalOpen = useRef(null);
-
-  const memoCall = useMemo(() => {
-        console.log("count call");
-        return count;
-    },[count]);
-
-  
-    const countFun = () => {
-        console.log("count call");
-        return count;
-    }
-
-    const myModal = () => {
-        modalOpen.current.value = 1234;
+    const toggle = () => {
+        setModal(!modal);
     }
 
   return (
     <div className="App">
-      <h2>{memoCall}</h2>
-      <button onClick={() => setCount(count+1)}>Count</button>
-      <h2 className='color'>{data}</h2>
-      <button onClick={() => setData(data+1)}>Data</button><br/><br/>
-      <ForwordRefCom ref={modalOpen}/>
-      <button onClick={myModal}>Open Modal</button>
+        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+        <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">Modal title</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-primary">Save changes</button>
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   );
 
