@@ -6,6 +6,8 @@ import Home from './Home';
 import About from './About';
 import Page404 from './Page404';
 import UserPage from './UserPage';
+import Contact from './Contact';
+import Company from './Company';
 
 function App() {
  
@@ -15,9 +17,9 @@ function App() {
       <Router>
         <Routes>
             <Route excat path='/' element={<Home/>}/>
-            <Route excat path='/about' element={<About/>}/>
-            <Route excat path='/user/:name' element={<UserPage/>}/>
-            <Route excat path='/user/:name' element={<UserPage/>}/>
+            <Route excat path='/contact/' element={<Contact/>}>
+                <Route path='company' element={<Company/>}/>
+            </Route>
             <Route excat path='/*' element={<Page404/>}/>
         </Routes>
       </Router>
