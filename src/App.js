@@ -1,46 +1,29 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 import './Style.css';
-import style from './style.module.css';
-import ForwordRefCom from './ForwordRefCom';
-// import ClassComp from './ClassComp';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Home from './Home';
+import About from './About';
+import Page404 from './Page404';
+import UserPage from './UserPage';
 
 function App() {
-
-    const [modal, setModal] = useState(false);
-
-    const toggle = () => {
-        setModal(!modal);
-    }
-
+ 
   return (
     <div className="App">
-        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-        <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title">Modal title</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div className="modal-body">
-                        <p>Modal body text goes here.</p>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-primary">Save changes</button>
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  );
+        
+      <Router>
+        <Routes>
+            <Route excat path='/' element={<Home/>}/>
+            <Route excat path='/about' element={<About/>}/>
+            <Route excat path='/user/:name' element={<UserPage/>}/>
+            <Route excat path='/user/:name' element={<UserPage/>}/>
+            <Route excat path='/*' element={<Page404/>}/>
+        </Routes>
+      </Router>
 
-  
+    </div>
+  );  
   
 }
 
